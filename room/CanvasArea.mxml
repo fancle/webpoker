@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()" verticalScrollPolicy="on" horizontalScrollPolicy="off" color="#ffffff">
+	<mx:Script>
+		<![CDATA[
+			import org.gif.player.GIFPlayer;
+			import mx.events.ScrollEventDirection;
+			import mx.events.ScrollEvent;
+			import mx.core.UITextField;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			import mx.controls.Text;
+			import mx.controls.Image;
+			import flash.utils.setTimeout;
+			
+			/**当前TextField字体大小*/
+			private var fontSize:Number=13;
+			
+			/**显示内容总宽度与容器宽度差额
+			 * 这个地方的值主要是设置滚动条的宽度，控制垂直滚动体不遮住内容
+			 * **/
+			private var Total_width:Number=15;
+			
+			private var totalChilders:int=0;
+			
+			private var _emotionHolder:EmotionHolder;
+		
+			//	表情配置文件
+			private var _emotionXML:XML;
+			
+			private function init():void{
+				_emotionHolder = new EmotionHolder();
+				_emotionXML = EmotionHolder.getData();
+				Total_width=this.width-Total_width;
+				this.setStyle("fontSize",fontSize);
+				this.setStyle("color",0x000000);
+				this.addEventListener(FlexEvent.UPDATE_COMPLETE,onUpdateComplete);
+				this.addEventListener(ScrollEvent.SCROLL,onScrollHandle);
+			}
+			public function dispalyMsg(message:String):void
+			{
+				//trace("---------dispalyMsgdispalyMsg------------->>");
+				//trace(message);
+				if(rows >= 60)
+				{
+					cleanAll();
+				}
+				
+				if(l_x!=0){//上次未结束,另起一行
+					l_x=0;
+					l_y=max_y;
+				}
+				
+				var arr:Array = message.split("|");
+				//testArray(arr);
+				if(arr.length<=0){
+					AddTextArea(message);
+					totalChilders+=1;
+				}else{
+					totalChilders+=arr.length;
+					for each(var item:String in arr)
+					{
+						if(item.charAt(0) != "/")
+						{
+							AddTextArea(item);
+						}
+						else if(item.charAt(0) == "/" && isEmotion(item) != null)
+						{
+							AddImage(isEmotion(item));
+						}
+						else
+						{
+							AddTextArea(item);
+						}
+					}
+				}
+				//trace("totalChilders-==00===>>::"+totalChilders);
+				/**重新排版*/
+				ReLocal();
+			}
+			private function AddTextArea(text:String,index:int=0):void{
+				
+				//trace("text---------------------->>::"+text);
+				var textField:Text=new Text();
+				//textField.visible = false;
+				textField.htmlText=text;
+				textField.setStyle("fontSize",fontSize);
+				if(index==0)
+					addChild(textField);
+				else{
+					addChildAt(textField,index);
+					//this.validateNow();
+					ReLocal();
+				}
+				this.validateNow();
+			}
+			
+			private var image:Image;
+			
+			private function AddImage(_ref:Class):void{
+				image=new Image();
+				image.visible = false;
+				image.width = 25;
+				image.height = 25;
+				var _gifPlayer:GIFPlayer = new GIFPlayer();
+				_gifPlayer.loadBytes(new _ref());
+				image.addChild(_gifPlayer);
+				addChild(image);
+				//this.validateNow();
+		    }
+		    
+		    //	检测显示对象是文本OR表情
+			private function isEmotion(_string:String):Class
+			{
+				var _xmlList:XMLList = _emotionXML.emotion;
+				
+				if(_string.charAt(0) != "/")
+				{
+					return null;
+				}
+				
+				for(var i:int = 0; i < _xmlList.length(); i++)
+				{
+					if(_xmlList[i].@name == _string)
+					{
+						return _emotionHolder[_xmlList[i].@classname] as Class;
+					}
+				}
+			
+				return null;
+			}
+		    
+		    /**添加的控件总数**/
+			private var totalChilds:Number=0;
+			
+			/**上次结尾X坐标**/
+			private var l_x:Number=0;
+			
+			/**上次结尾Y坐标**/
+			private var l_y:Number=0;
+			
+			/**上一行中最大Y坐标**/
+			private var max_y:Number=0;
+			
+			/**当前行、当前控件假设未下一行时Y坐标**/
+			private var curr_y:Number=0;
+			
+			/**当前控件**/
+			private var curr_child:DisplayObject=null;
+			
+			/**当前控件相对父控件Index**/
+			private var curr_childIndex:int=0;
+			
+			/**当前行剩下可用宽度**/
+			private var curr_row_left_width:Number=0;
+			
+			/**当前行需写字符**/
+			private var curr_row_string:String="";
+			
+			/**当前行剩下可写字符**/
+			private var curr_row_left_string:String="";
+			
+			/**当前行剩下可写字符长度**/
+			private var curr_row_left_length:int=0;
+			
+			private var Total_Childrens:int=0;
+			
+			/**当前控件总行数*/
+			private var rows:int = 1;
+			
+		   	private function ReLocal():void{
+		   		Total_Childrens=getChildren().length;
+		   		//trace("totalChilders-======>>::"+totalChilders);
+		   		//trace("Total_Childrens======>>::"+Total_Childrens);
+		   		if(totalChilders!=Total_Childrens){
+		   			//trace("加载未完成");
+		   			setTimeout(ReLocal,10);
+		   			return;
+		   		}
+		   		
+		   		for(var i:int=curr_childIndex;i<Total_Childrens;i++){
+		   			var curr_child:DisplayObject=getChildAt(i);
+		   			//trace("curr_child.width=============>>::"+curr_child.width);
+					if(curr_child.width==0){
+						//trace("当前加载未完成：",curr_child.name,i,Total_Childrens);
+						
+		   				setTimeout(ReLocal,10);
+		   				return;
+					}
+					curr_childIndex++;
+					
+					//trace("l_x+curr_child.width--------------->>::"+(l_x+curr_child.width));
+					//trace("Total_width------------------------>>::"+Total_width);
+					
+					if(l_x+curr_child.width<=Total_width){/** 未到终点 */
+						curr_child.x=l_x;
+						curr_child.y=l_y;
+						l_x+=curr_child.width;
+						
+						curr_y=curr_child.height+curr_child.y;
+						max_y=curr_y>max_y?curr_y:max_y;
+					}else{/** 超过终点 */
+						rows++;
+						
+						if(l_x>=Total_width||curr_child is Image){/**上次结尾刚好到终点，或者是图片，直接另起一行*/
+							curr_child.x=l_x=0;
+							
+							rows++;
+							
+							l_x=curr_child.width+l_x;
+							l_y=max_y;
+							curr_child.y=l_y;
+							curr_y=curr_child.height+curr_child.y;
+							max_y=curr_y>max_y?curr_y:max_y;
+						}else if(curr_child is Text){/**拆字符*/
+						
+							curr_row_left_width=Total_width-l_x;
+							curr_row_string=(curr_child as Text).text;
+							//trace("curr_row_string------------------------->>::"+curr_row_string);
+							curr_row_left_length=getWidthCharCount(curr_row_string,curr_row_left_width);
+							//trace("curr_row_left_length------------------------->>::"+curr_row_left_length);
+							curr_row_left_string=curr_row_string.substr(0,curr_row_left_length);
+							(curr_child as Text).text=curr_row_left_string;
+							curr_child.x=l_x;
+							curr_child.y=l_y;
+							l_x=0;
+							
+							rows++;
+							
+							curr_y=curr_child.height+curr_child.y;
+							max_y=curr_y>max_y?curr_y:max_y;
+							l_y=max_y;
+							totalChilders++;
+							AddTextArea(curr_row_string.substr(curr_row_left_length),curr_childIndex);
+						}
+					}
+					//trace("Row-------000-------------->>::"+rows);
+					curr_child.visible = true;
+				}
+			}
+			
+			private var scorllable:Boolean=true;
+			private function onScrollHandle(event:ScrollEvent):void{
+				if(event.direction==ScrollEventDirection.VERTICAL){
+					if(event.position>=maxVerticalScrollPosition){
+						scorllable=true;
+					}else{
+						scorllable=false;
+					}
+				}
+			}
+			private function onUpdateComplete(event:FlexEvent):void{
+				if(scorllable){
+					verticalScrollPosition=maxVerticalScrollPosition;
+					//if(maxVerticalScrollPosition>=1500)
+						//setTimeout(cleanAll,1500);
+				}
+			}
+			
+			/**根据指定长度，返回可写字符数
+			 * 目前方法针对HTMLText而言
+			 * **/
+			private var textMetrices:TextLineMetrics;
+			private function getWidthCharCount(str:String,width:Number):int{
+				textMetrices = measureHTMLText(str);
+				if(textMetrices.width>width){
+					return getWidthCharCount(str.substr(0,str.length-1),width);
+				}else{
+					return str.length;
+				}
+				
+			}
+			/**清空**/
+			public function cleanAll():void{
+				totalChilders=0;
+				curr_childIndex=0;
+				max_y = 0;
+				l_x=0;
+				l_y=0;
+				curr_y=0;
+				this.removeAllChildren();
+				rows = 1;
+			}
+			
+			// Text to Array for display
+			private function parseText(_text:String):Array
+			{
+				return _text.split("|") as Array;
+			}
+			
+			private function testArray(_aray:Array):void
+			{
+				for(var i:int = 0 ; i < _aray.length; i++)
+				{
+					trace(i +"=-=============>>::"+_aray[i]);
+				}	
+			}
+		]]>
+	</mx:Script>
+</mx:Canvas>

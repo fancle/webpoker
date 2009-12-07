@@ -1,0 +1,33 @@
+/* CSS file */
+
+.DataGridCss
+{
+	backgroundColor: #F7DFBD;
+	backgroundAlpha: 0.7; 
+	alternatingItemColors: ClassReference(null);
+	dropShadowColor:#FFFFFF;
+	roll-over-color:#FFAC00;
+	selection-color:#FF8C00
+}
+
+.UserTitleWin
+{
+	/* title-background-skin:Embed(skinClass="use_titilebar_skin"); */
+	header-colors:#f78d52,#f45e0b;
+	highlight-alphas:0.4,0.3;
+ 	/* close-button-skin:Embed(skinClass="user_close_btn"); */
+	border-thickness:1;
+	border-color:#D24E00;
+	border-thickness-top:0;
+	border-thickness-bottomd:0;
+	border-thickness-left:0;
+	border-thickness-right:0;
+	background-color:#FEBA03;
+	/* background-skin:Embed(skinClass="user_win_bg"); */
+    /* Set values from defaults.css to null. */
+    closeButtonDisabledSkin: ClassReference(null);
+    closeButtonDownSkin: ClassReference(null);
+    closeButtonOverSkin: ClassReference(null);
+    closeButtonUpSkin: ClassReference(null);
+    background-disabled-color:ClassReference(null)
+}

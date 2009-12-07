@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Module xmlns:mx="http://www.adobe.com/2006/mxml"
+		   layout="absolute"
+		   width="950"
+		   height="620" color="#FF0000"
+		   xmlns:local="*"
+		   backgroundColor="#623311"
+		   creationCompleteEffect="ch"
+		   xmlns:ns1="flexlib.containers.*" xmlns:ns2="Application.view.componentView.ad.*"
+		   styleName="gameframecss" xmlns:medal="Application.view.componentView.medal.*">
+	<mx:ApplicationControlBar width="100%"
+							  height="25"
+							  styleName="gameframe"		
+							  id="topGameFrame"				  
+							  >
+		<local:logo  > 
+		</local:logo>
+		<mx:Label id="title"  width="407" text="" textAlign="left">
+			
+		</mx:Label>
+		<mx:Spacer width="95%">
+		</mx:Spacer>
+		<mx:Button width="20.6"
+				   height="20.6"
+				   skin="gameframe_explain_btn"
+				   buttonMode="true"
+				   id="music_btn"
+				   toggle="true"
+				   toolTip="声音控制"
+				   
+				   />
+		<mx:Button width="20.6"
+				   height="20.6"
+				   skin="gameframe_question_btn"
+				   buttonMode="true"
+				   id="question_btn"
+				   toolTip="游戏介绍"
+				   />
+		<mx:Button width="20.6"
+				   height="20.6"
+				   id="closeBtn"
+				   skin="gameframe_close_btn"
+				   buttonMode="true"
+				   toolTip="退出游戏"/>
+
+
+	</mx:ApplicationControlBar>
+	<mx:HBox x="0"
+			 y="25"
+			 width="100%"
+			 height="595"
+			 horizontalGap="0"
+			 horizontalAlign="right"
+			 paddingLeft="0">
+		<mx:Canvas width="758"
+				   height="595"
+				   backgroundColor="#623311"
+				   id="gameArea"
+				   >
+		
+		</mx:Canvas>
+
+		<mx:VBox width="189"
+				 height="100%"
+				 verticalGap="1">
+
+			<mx:Canvas width="100%"
+					   height="128"
+					   id="perInfo">
+				<local:gameframe_user_bg x="5">				
+				</local:gameframe_user_bg>
+				<mx:Form x="77"
+						 y="10"
+						 paddingLeft="0"
+						 id="form"
+						 paddingTop="0"
+						 width="110"
+						 height="102"
+						 verticalScrollPolicy="off"
+						 horizontalScrollPolicy="off"
+						 indicatorGap="0">
+					<mx:FormItem label="昵  称:">
+						<mx:Label textAlign="right"
+								  color="#FFFFFF"
+								  id="nickname"/>
+					</mx:FormItem>
+
+					<mx:FormItem label="U   豆:"
+								 horizontalAlign="right">
+						<mx:Label color="#FFFFFF"
+								  id="U_bean"/>
+					</mx:FormItem>
+					<mx:FormItem label="U  券:"
+								 horizontalAlign="right">
+						<mx:Label color="#FFFFFF"
+								  id="U_quan"/>
+					</mx:FormItem>
+					<mx:FormItem label="等  级:"
+								 horizontalAlign="right">
+						
+					<medal:medalTile id="grade">
+						
+					</medal:medalTile>
+					</mx:FormItem>
+				</mx:Form>
+				<ns2:adComponet id="headPic" x="6" y="12" width="67" height="89">
+				</ns2:adComponet>
+			</mx:Canvas>
+			<mx:DataGrid id="dg"
+						 width="189"
+						 height="128"
+						 alpha="1.0"
+						 borderThickness="1"
+						 styleName="gameframe"
+						 borderStyle="solid"
+						 horizontalScrollPolicy="auto"
+						 verticalScrollPolicy="auto"
+						 dataProvider="{dataArr}">
+
+			</mx:DataGrid>
+			<mx:Canvas>
+				
+	
+
+			<ns1:ButtonScrollingCanvas width="189"
+									   height="47"
+									   startScrollingEvent="{MouseEvent.MOUSE_DOWN}"
+									   stopScrollingEvent="{MouseEvent.MOUSE_UP}"
+									   backgroundColor="#623311"
+									   
+									   >
+			
+				<mx:HBox paddingTop="6" horizontalGap="1" paddingLeft="17" paddingRight="18" backgroundColor="#623311">
+					<mx:Button skin="flowers_medal" buttonMode="true" id="hua_btn">
+					</mx:Button>
+					<mx:Button skin="labber_medal" buttonMode="true" id="poshui_btn">						
+					</mx:Button>
+					<mx:Button skin="applaud_medal" buttonMode="true" id="guzhang_btn">
+					</mx:Button >
+					<mx:Button skin ="brick_medal" buttonMode="true" id="zhuan_btn">						
+					</mx:Button>
+				</mx:HBox>
+			</ns1:ButtonScrollingCanvas>
+			</mx:Canvas>			 
+			<local:CanvasArea id="chatGameText" width="186" height="263" backgroundColor="#CBB492" borderStyle="solid" borderColor="#F4FE7F" borderThickness="1" themeColor="#F4FE7F">
+			</local:CanvasArea>
+
+			<mx:Canvas height="23" width="187" horizontalScrollPolicy="off" backgroundColor="#623311" borderColor="#FFD83F" themeColor="#FFD83F" color="#000000" borderThickness="2" >
+				<mx:ComboBox id="chatMsg" width="121" editable="true"  >
+				</mx:ComboBox>
+				<mx:Button id="sendBtn" label="SEND" width="20" height="20" skin="game_chatsend_skin" x="121" y="1"/>
+				<mx:Button id="emotionBtn" label="EMOTION" width="20" height="20" skin="game_emotionBtn_skin" x="142" y="1"/>
+				<!--<mx:Button id="clrBtn" x="165" y="1" label="COLOR" width="20" height="20" skin="game_chatstyleBtn_skin"/>-->
+			</mx:Canvas>
+
+		</mx:VBox>
+	</mx:HBox>
+	<local:gameframe_boder_left y="25" x="0">
+		
+	</local:gameframe_boder_left>
+	<local:gameframe_boder_left y="25" x="755.9">
+		
+	</local:gameframe_boder_left>
+	<local:gameframe_border_bottom y="612.5" x="3" >		
+	</local:gameframe_border_bottom>
+	<local:EmotionChooser id="emotionChooser" x="705" y="426" visible="false">
+	</local:EmotionChooser>
+
+	<mx:Canvas id="MessagePane" width="100%" height="100%" backgroundColor="#181818" backgroundAlpha="0.0" mouseEnabled="false" mouseChildren="false">
+		<mx:TextArea text="" id="MessageText"  verticalScrollPolicy="off" fontSize="26" color="#FDFCFC" backgroundAlpha="0.0" borderStyle="none" width="483" height="155" x="133" y="163" textAlign="center" fontWeight="bold" editable="false"/>
+		
+	</mx:Canvas>
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			[Bindable]
+			public var dataArr:ArrayCollection=new ArrayCollection();
+		]]>
+	</mx:Script>
+</mx:Module>

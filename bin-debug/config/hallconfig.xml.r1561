@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+    <version no="v0.1027"></version> <!--版本号 no为版本号-->
+    <crossdomain name="cro" url=""><!--策略文件地址-->
+    </crossdomain>
+	<servers>
+		<server id="login" host="124.115.16.150" port="9001" ></server> <!--服务器地址 可能会有多个服务器地址  id为服务id host为服务ip port为服务器端口-->
+		<!--<server id="login" host="192.168.0.104" port="9001" ></server>--> <!--服务器地址 可能会有多个服务器地址  id为服务id host为服务ip port为服务器端口-->
+	</servers>	
+	<hallRes prefix=""><!-- 大厅文件夹的位置-->	
+	         <res name="HandleBean" url="beans/Handle.swf" type="rsl" ></res>
+	         <res name="headPic" url="head_pic.swf" type="rsl" ></res>	
+	         <res name="hall"  url="hall.swf" type="module"></res>
+		     <res name="login" url="LoginModule.swf" type="module"></res><!-- 大厅名称和资源的地址-->
+		     <res name="room"  url="RoomModule.swf" type="module"></res>		     	      
+   </hallRes>
+   <photo url="http://member.uxiuxi.com/LOGO/"></photo><!--获取网站上资源的路径 -->
+   <links><!--各种需要超链接的地方 -->
+   	   <link name="logout"     url="http://www.uxiuxi.com/login.php?ac=logout"></link>
+   	   <link name="duihuan"    url="http://shop.uxiuxi.com/index.php?c=exchange&type=2" ></link><!-- 兑换按钮地址-->
+       <link name="headPic"    text="" url="http://member.uxiuxi.com/LOGO/"></link><!--头像的根路径文件夹 -->
+       <link name="topLeft"    text="邀请好友可获20000豆，赶快行动吧！" url="http://spread.uxiuxi.com/"></link><!--平台右上方文字广告 -->
+       <link name="register"   text="" url="http://www.hao123.com"></link><!--注册的网页地址 -->
+       <link name="modify"     text="" url="http://member.uxiuxi.com/ChangeUserInfo.aspx"></link>  <!--修改的网页地址 -->
+       <link name="charge"     text="" url="http://member.uxiuxi.com/NetBank.aspx"></link>     <!--充值的网页地址 -->
+       <link name="majiangMatch" text=""  url="http://services.uxiuxi.com/jjermj.php"></link> <!--麻将比赛说明的网页地址 -->
+       <link name="doudizhuMatch" text="" url="http://services.uxiuxi.com/jjddz.php"></link> <!--斗地主比赛说明的网页地址 -->
+       <link name="斗地主"  text="" url="http://services.uxiuxi.com/ddz.php"></link><!--斗地主游戏说明 -->
+       <link name="二人麻将"  text="" url="http://services.uxiuxi.com/ermj.php"></link><!-- 麻将游戏说明 -->
+   </links>
+    <ads>
+      <ad   name="hallTop" url="adLib/bcastr4.swf" link="http://www.163.com"></ad><!-- 大厅广告  595X136-->
+      <ad   name="hallTop1" url="ad.png" link="http://spread.uxiuxi.com/"></ad>
+   </ads>
+  
+   <gameList url="config/gameList.xml"></gameList> <!--游戏配置文件的地址-->
+   <emotion	url="config/emotionFace.xml"></emotion><!-- 表情配置文件地址 -->
+   <gametype url="config/gameType.xml"></gametype>
+   
+   <serverNameRule>
+   		<server id="2101">
+   			<name></name>
+   			<multiple>1倍</multiple>
+   			<description></description>
+   			<limit>600 U豆</limit>
+   		</server>
+   		<server id="2102">
+   			<name></name>
+   			<multiple>10倍</multiple>
+   			<description>防作弊</description>
+   			<limit>6000 U豆</limit>
+   		</server>
+   		<server id="2104">
+   			<name></name>
+   			<multiple>100倍</multiple>
+   			<description>防作弊</description>
+   			<limit>60000 U豆</limit>
+   		</server>
+   		<server id="2201">
+   			<name></name>
+   			<multiple>10U豆</multiple>
+   			<description></description>
+   			<limit>300 U豆</limit>
+   		</server>
+   		<server id="2202">
+   			<name></name>
+   			<multiple>100U豆</multiple>
+   			<description></description>
+   			<limit>3000 U豆</limit>
+   		</server>
+   		<server id="2204">
+   			<name></name>
+   			<multiple>1000U豆</multiple>
+   			<description></description>
+   			<limit>30000 U豆</limit>
+   		</server>
+   		
+   		<server id="6101">
+   			<name>新手赚金赛</name>
+   			<multiple></multiple>
+   			<description>24小时免费参赛</description>
+   			<limit></limit>
+   		</server>
+   		<server id="6102">
+   			<name>小试牛刀</name>
+   			<multiple></multiple>
+   			<description>赢U券换实物</description>
+   			<limit></limit>
+   		</server>
+   		<server id="6104">
+   			<name>大富翁</name>
+   			<multiple></multiple>
+   			<description></description>
+   			<limit></limit>
+   		</server>
+   		<server id="6201">
+   			<name>新手赚金赛</name>
+   			<multiple></multiple>
+   			<description>24小时免费参赛</description>
+   			<limit></limit>
+   		</server>
+   		<server id="6202">
+   			<name>小试牛刀</name>
+   			<multiple></multiple>
+   			<description>赢U券换实物</description>
+   			<limit></limit>
+   		</server>
+   		<server id="6204">
+   			<name>大富翁</name>
+   			<multiple></multiple>
+   			<description></description>
+   			<limit></limit>
+   		</server>
+   </serverNameRule>
+</data>

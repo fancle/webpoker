@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" styleName="loadPane" height="100%"  xmlns:local="*" xmlns:ns1="Application.view.componentView.loaderpane.*">
+   <local:DiyProgressBar id="progressbar" x="10" y="116">   	
+   </local:DiyProgressBar>
+   <mx:ProgressBar id="progressnet"  indeterminate="true" x="88" y="14.95" visible="false">   	
+   </mx:ProgressBar>
+	<mx:Script>
+		<![CDATA[
+		   //加载条进度设置
+			public function setProgress(value:Number,total:Number):void{				
+				progressbar.setProgress(value,total);//自定义方法				 							
+			}
+			//设置家在标题栏
+			public function setStatues(value:String):void{
+				progressbar.setStatueTxt(value);
+			}
+
+			public function showWord():void{
+				progressbar.showWord();
+			}    
+			public function playMovie():void{
+				progressbar.playMovie();
+			}    
+			    
+		]]>
+	</mx:Script>
+
+</mx:Canvas>

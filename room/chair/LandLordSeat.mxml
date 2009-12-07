@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:local="*"  implements="chair.IChairView" buttonMode="true" mouseChildren="true" backgroundColor="#FBC603"  >
+	<!-- Describe LandLord-Seat operation and property -->
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Label;
+			import mx.core.UIComponent;
+			import mx.flash.UIMovieClip;
+			
+			// Is anybody sit on it.
+			private var _isSit:Boolean = false;
+			
+			private var _isReady:Boolean = false;
+			
+			private var  _chairId:int; //椅子id
+			private var _tableId:int;//桌子id
+			[Bindable]
+			private var _head:UIComponent = new UIComponent();
+			private var _text:UIComponent = new UIComponent();
+			private var _textName:TextField = new TextField();
+			[Bindable]
+			private var _headPic:Bitmap;
+			private var _userId:int;
+			
+			public function get isSit():Boolean
+			{
+				return _isSit;	
+			}
+			
+			public function set isSit(value:Boolean):void
+			{
+				_isSit = value;
+				
+				if(value)
+				{
+					//seat.gotoAndStop(6);
+				}
+				else
+				{
+					seat.gotoAndStop(1);
+				}
+			}
+			
+			public function get isReady():Boolean
+			{
+				return _isReady;	
+			}
+			
+			public function set isReady(value:Boolean):void
+			{
+				_isReady = value;
+			}
+			public function set chairId(value:int):void{
+				_chairId = value;
+			}
+			public function get chairId():int{
+				return _chairId;
+			}
+			public function set tableId(value:int):void{
+				_tableId = value;
+			}
+			public function get tableId():int{
+				return _tableId;
+			}
+			public function setHead(value:Bitmap,userName:String,userId:int):void{
+				clearHead();
+				_headPic = value;
+				_headPic.x = -10;
+				_userId = userId;
+				_head.addChild(_headPic);
+				_text.addChild(_textName);
+				_textName.selectable = false;
+				_textName.defaultTextFormat = new TextFormat(null,12,0x000000);
+				if(!this.contains(_head)){					
+					addChild(_head);
+					_head.addEventListener(MouseEvent.ROLL_OVER,playGrow,false,0,true);
+					_head.addEventListener(MouseEvent.ROLL_OUT,stopGrow,false,0,true);
+						
+						
+				}
+				if(!this.contains(_text)){
+					addChild(_text);
+				}
+				_textName.text = userName;
+				if(chairId<2){
+					
+					_textName.y = -20;
+				}else{
+					 _textName.x = value.width+10;
+				}
+				_textName.width = _textName.textWidth+10;
+				_textName.height = _textName.textHeight+20;
+				seat.visible = false;
+			}
+			public function clearHead():void{
+				while(_head.numChildren>0){
+					_head.removeChildAt(0);					
+				}
+				while(_text.numChildren>0){
+					_text.removeChildAt(0);
+				}
+				seat.visible = true;
+			}
+			private function playGrow(evt:MouseEvent):void{
+				glow.play();
+			}
+			private function stopGrow(evt:MouseEvent):void{
+				glow.end();
+			}
+			public function get userId():int{
+				return _userId;
+			}
+		]]>
+	</mx:Script>
+	
+	<local:landlord_seat id="seat"  rollOver="glow.play()" rollOut="glow.end()">
+	</local:landlord_seat>
+	
+	<mx:Glow id="glow" filter="add" 
+			blurXFrom="0" blurXTo="20"
+			blurYFrom="0" blurYTo="20"
+			color="#FFFFFF" knockout="false"
+			repeatCount="0" strength="20" 
+			inner="false" targets="{[seat,_head]}" duration="800">
+	</mx:Glow>
+	
+</mx:Canvas>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<item name="斗地主"  type="chair.LandLordTableView" gamename="doudizhu"/><!--type 椅子的类  name服务器穿过的游戏名 gamename 游戏列表里相对应的游戏名-->
+	<item name="麻将"   type="chair.MahjongTableView"  gamename="majiang"/>	
+</data>

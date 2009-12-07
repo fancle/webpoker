@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Form xmlns:mx="http://www.adobe.com/2006/mxml" width="146" height="64" color="#FFFFFF" backgroundColor="#3D6C93" borderColor="#000000" borderStyle="solid" horizontalScrollPolicy="off" paddingTop="0" paddingLeft="0" verticalScrollPolicy="off" verticalGap="0" shadowDirection="center" dropShadowColor="#000000">
+			<mx:FormItem label="地主:" width="142" color="#FFFFFF" borderColor="#FFFFFF" borderStyle="none" >
+			<mx:Label text="Label" width="70" id="landName"/>
+		</mx:FormItem>
+		<mx:FormItem label="地主分数:" width="142" color="#FFFFFF" borderColor="#FFFFFF"  borderStyle="none">
+			<mx:Label text="Label" width="70" id="landScore"/>		
+		</mx:FormItem>
+		<mx:FormItem label="炸弹倍数:" width="142" color="#FFFFFF"  borderStyle="none" borderColor="#FFFFFF">
+			<mx:Label text="Label" width="70" id="bombScore"/>
+		</mx:FormItem>
+</mx:Form>

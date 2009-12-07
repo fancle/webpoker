@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="223" height="48" borderColor="#C5391D" styleName="connenctLoading" backgroundColor="#FF7849" x="22" y="31">
+	<mx:ProgressBar indeterminate="true" enabled="true" id="progressbar" label="正在连接服务器" y="10" x="11" fontSize="12"/>	
+</mx:Canvas>

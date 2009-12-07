@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
+				titleIcon="@Embed(skinClass='logo')"
+				showCloseButton="true"
+				width="425"
+				height="385"
+				cornerRadius="0"
+				backgroundColor="#FEBA03"
+				layout="absolute"
+				verticalScrollPolicy="off"
+				horizontalScrollPolicy="off"
+				dropShadowEnabled="false"
+				styleName="wisper">
+	<mx:Script>
+		<![CDATA[
+			
+		/*	private var _chatUserInfo:Object;
+			
+			public function set chatUserInfo(value:Object):void
+			{
+				_chatUserInfo = value;
+			}
+			
+			public function get chatUserInfo():Object
+			{
+				return _chatUserInfo;
+			}
+		*/
+			
+		]]>
+	</mx:Script>
+	<mx:TextArea id="chatText"
+				 width="425"
+				 height="175"
+				 x="-2" editable="false" 
+				 color="#000000" 
+				 liveScrolling="true">
+	</mx:TextArea>
+	<mx:TextInput id="chatMsg"
+				  width="421"
+				  height="95"
+				  backgroundColor="#FFFFFF"
+				  y="221"
+				  x="0" 
+				  editable="true"
+				  color="#000000">
+	</mx:TextInput>
+	<mx:Text x="3"
+			 y="181"
+			 width="420"
+			 height="42"
+			 fontSize="12"
+			 fontWeight="bold"
+			 selectable="false"
+			 textAlign="center"
+			 text="  优嘻提示：优嘻客服人员不会向任何玩家所要账号密码及账号保护信息,&#xa;建议在任何时间任何地点都不要向任何人透露账号及账号保护信息。"/>
+	<mx:Button id="closeBtn"
+			   skin="room_btn_skin"
+			   label="关  闭"
+			   x="261"
+			   y="324"
+			   width="65"
+			   height="25"
+			   borderColor="#CF4700"
+			   color="#FFFFFF"/>
+	<mx:Button id="sendBtn"
+			   skin="room_btn_skin"
+			   label="发  送"
+			   x="345"
+			   y="324"
+			   width="65"
+			   height="25"
+			   borderColor="#CF4700"
+			   color="#FFFFFF"/>
+</mx:TitleWindow>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="189" height="47" horizontalScrollPolicy="off"  verticalScrollPolicy="off" backgroundColor="#0C5083" horizontalGap="0" xmlns:local="*">
+	<mx:Button  width="15" height="100%" skin="gameframe_left_btn"  buttonMode="true" click="goLeft(event)"/>
+	<mx:VRule height="100%" strokeColor="#FFFFFF"/>
+	<mx:HorizontalList  width="156"  height="46" dataProvider="{arr}" horizontalScrollPolicy="off" id="hlist" textAlign="center" itemRenderer="props_btn" >
+
+	</mx:HorizontalList>
+	<mx:VRule height="100%" strokeColor="#FFFFFF"/>
+	<mx:Button  width="15" height="100%" skin="gameframe_right_btn" buttonMode="true" click="goRight(event)"/>
+	<mx:Script>
+		<![CDATA[
+			import mx.events.ScrollEvent;
+			import mx.events.ScrollEventDirection;
+ 			       [Bindable]
+	         [Embed(source="head1.png")]
+             public var phone1:Class
+             			       [Bindable]
+	         [Embed(source="bg1.png")]
+             public var phone2:Class
+             internal function goLeft(evt:MouseEvent):void{
+             	
+             }
+             internal function goRight(evt:MouseEvent):void{
+             	
+                 hlist.scrollToIndex(arr.length) ;
+                
+                 
+             } 
+             [Bindable]
+             public var arr:Array = [flowers_medal,labber_medal,applaud_medal,brick_medal,flowers_medal];
+             
+		]]>
+	</mx:Script>
+</mx:HBox>
