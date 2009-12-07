@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="#FFFFFF" borderStyle="solid" borderThickness="1" borderColor="#055E91" cornerRadius="2" creationComplete="init()">
+	<mx:Image id="emotionHolder" source="image3.jpg" rollOver="onRollOverHandler(event)" rollOut="onRollOuthandler(event)" click="onClickHandler(event)">
+	</mx:Image>
+	<mx:Image id="img" width="55" height="55" visible="false">
+	</mx:Image>
+	<mx:Canvas id="emotionBorder" mouseEnabled="false" mouseChildren="false" width="25" height="25" borderColor="#1E08EE" borderStyle="solid" borderThickness="1" visible="false">
+	</mx:Canvas>
+	<mx:Canvas id="emotionPreview" mouseEnabled="false" mouseChildren="false" backgroundColor="#FFFFFF"  width="50" height="50" y="3" x="4" borderStyle="solid" borderColor="#000000" borderThickness="1" visible="false">
+		<mx:Image id="emotionView"  visible="true">
+		</mx:Image>
+	</mx:Canvas>
+	
+	<mx:Script>
+		<![CDATA[
+			import common.data.gameEvent;
+			import org.gif.events.GIFPlayerEvent;
+			import org.gif.player.GIFPlayer;
+			import common.assets.ModuleLib;
+			import mx.modules.ModuleLoader;
+			
+			private const ROWS:uint = 9;
+			private const COLUMNS:uint = 6;
+			private const GRIDSIZE:Number = 26;
+			private const STARTPOS:Number =	3; 
+			
+			private var oldGx:Number;
+			private var oldGy:Number;
+			
+			private var preEmotion:Bitmap;
+			private var _emotionXML:XML;
+			
+			private var _emotionHolder:EmotionHolder;
+			
+			private function init():void
+			{
+				oldGx = -1;
+				oldGy = -1;
+				_emotionHolder = new EmotionHolder();
+				_emotionXML = EmotionHolder.getData();
+			}
+		
+			private function onRollOverHandler(event:MouseEvent):void
+			{
+				//trace("onRollOverHandler-------------------->>:"+event.target);
+            	//var _emotionHolder:Image = event.target as Image;
+            	
+            	emotionHolder.addEventListener(MouseEvent.MOUSE_MOVE,onEmotionHolderMove);
+			}
+			
+			private function onRollOuthandler(event:MouseEvent):void
+			{
+				var _emotionHolder:Image = event.target as Image;
+				emotionHolder.removeEventListener(MouseEvent.MOUSE_MOVE,onEmotionHolderMove);
+				emotionPreview.visible = false;
+				emotionBorder.visible = false;
+				//trace("onRollOuthandler-------11------------->>:"+event.target);
+			}
+			
+			private function onClickHandler(event:MouseEvent):void
+			{
+				this.visible = false;
+				try{
+					var _point:Point = getGrid(event);
+				}
+				catch(e:Error)
+				{
+					//trace("SELECT EMOTION ERROR==================>>");	
+				}
+			//	trace("onClickHandler------------------->>::"+_point);
+				var _index:int = int(_point.x) + int(_point.y - 1) * 9;
+				
+				var _event:gameEvent = new gameEvent("select_emotion",_index - 1);
+				this.dispatchEvent(_event);
+			}
+			
+			private function getGrid(event:MouseEvent):Point
+			{
+				var _gridX:Number;
+            	var _gridY:Number;
+            	_gridX = int((event.localX - 1) / GRIDSIZE + 1);
+           	 	_gridY = int((event.localY - 2) / GRIDSIZE + 1);
+           	 	
+           		if (_gridX < 1 || _gridX > ROWS || _gridY < 1 || _gridY > COLUMNS )
+            	{
+               	 	return null;
+            	}// end if
+            	
+           		return new Point(_gridX, _gridY);	
+			}
+			
+			private function onEmotionHolderMove(event:MouseEvent):void
+			{
+				var _point:Point;
+				var _gridX:Number;
+				var _gridY:Number;
+				
+            	_point = getGrid(event);
+           	 	_gridX = _point ? (_point.x) : (-1);
+            	_gridY = _point ? (_point.y) : (-1);
+            	
+            	if (_point && oldGx == _gridX && oldGy == _gridY)
+            	{
+                	return;
+            	}// end if
+            	emotionBorder.visible = true;
+            	
+            	oldGx = _gridX;
+            	oldGy = _gridY;
+            	emotionBorder.x = emotionHolder.x + STARTPOS + (--_gridX) * GRIDSIZE;
+            	emotionBorder.y = emotionHolder.y + STARTPOS + (--_gridY) * GRIDSIZE;
+            	
+            	showEmotionPreview(_gridX,_gridY);
+			}
+			
+			private function showEmotionPreview(_row:Number , _column:Number):void
+			{
+				emotionPreview.visible = true;
+            if (emotionPreview.x > 10 && _row > 6 && _column < 4)
+            {
+                emotionPreview.x = emotionHolder.x + STARTPOS;
+                emotionPreview.y = emotionHolder.y + STARTPOS;
+            }
+            else if (_row < 4 && _column < 4)
+            {
+                emotionPreview.x = emotionHolder.x + STARTPOS + GRIDSIZE * 7;
+                emotionPreview.y = emotionHolder.y + STARTPOS;
+            }// end else if
+           	
+          	getPlayerByIndex(getShowIndex(_row, _column));
+           
+            return;
+			}
+			
+			private function getShowIndex(_row:uint,_column:uint):int
+			{
+				var _index:int = -1;
+				_index = _column * ROWS + _row ;
+				
+				return _index;
+			}
+			
+			private function getPlayerByIndex(_index:int):void	//GIFPlayer
+			{
+				if(_index > 0)
+				{
+					var _gifPlayer:GIFPlayer = new GIFPlayer();
+					_gifPlayer.loadBytes(new _emotionHolder["Emotion"+_index.toString()] as ByteArray);
+					if(emotionView.numChildren > 1)
+					{
+						emotionView.removeChildAt(0);	
+					}
+					_gifPlayer.x = 12;
+					_gifPlayer.y = 12;
+					emotionView.addChild(_gifPlayer);
+				}
+			}
+			
+			private function onCompleteGIF(event:GIFPlayerEvent):void
+			{
+				var _gifPlayer:GIFPlayer = event.target as GIFPlayer;
+				_gifPlayer.removeEventListener(GIFPlayerEvent.COMPLETE,onCompleteGIF);
+				
+				if(emotionView.numChildren > 1)
+				{
+					emotionView.removeChildAt(0);	
+				}
+				_gifPlayer.x = 12;
+				_gifPlayer.y = 12;
+				emotionView.addChild(_gifPlayer);
+			}
+			
+		]]>
+	</mx:Script>
+</mx:Canvas>

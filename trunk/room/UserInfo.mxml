@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" styleName="userInfo"  layout="absolute" width="313" height="225" titleIcon="@Embed(skinClass='logo')" xmlns:local="*" creationComplete="init()" showCloseButton="true" close="onClose(event)" headerHeight="27" xmlns:ns1="Application.view.componentView.ad.*">
+	<!--<mx:backgroundImage>@Embed(source='../../../../../libs/room_libs/user_win_bg.png')</mx:backgroundImage>-->
+	<mx:Script>
+		<![CDATA[
+			import mx.events.CloseEvent;
+			
+			private function init():void
+			{
+				//userImg.addEventListener(Event.COMPLETE, completeHandler);
+            	//userImg.addEventListener(HTTPStatusEvent.HTTP_STATUS, httpStatusHandler);
+           	 	//userImg.addEventListener(Event.INIT, initHandler);
+            	//userImg.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+            	//userImg.addEventListener(Event.OPEN, openHandler);
+            	//userImg.addEventListener(ProgressEvent.PROGRESS, progressHandler);
+            	//userImg.addEventListener(Event.UNLOAD, unLoadHandler);
+			}
+			
+			private function completeHandler(event:Event):void
+			{
+				trace("completeHandler----------------------------->>");	
+			}
+			
+			private function httpStatusHandler(event:HTTPStatusEvent):void
+			{
+				trace("httpStatusHandler----------------------------->>");
+			}
+			
+			private function initHandler(event:Event):void
+			{
+				trace("initHandler----------------------------->>");
+			}
+			
+			private function ioErrorHandler(event:IOErrorEvent):void
+			{
+				trace("ioErrorHandler----------------------------->>");
+			}
+			
+			private function openHandler(event:Event):void
+			{
+				trace("openHandler----------------------------->>");
+			}
+			
+			private function progressHandler(event:ProgressEvent):void
+			{
+				trace("progressHandler----------------------------->>");
+			}
+			
+			private function unLoadHandler(event:Event):void
+			{
+				trace("unLoadHandler----------------------------->>");
+			}
+			
+			private function onClose(event:CloseEvent):void
+			{
+				dispatchEvent(new Event("Close"));//关闭事件
+			}
+		]]>
+	</mx:Script>
+	<mx:Form x="124" y="0" width="154" height="143" verticalScrollPolicy="off" horizontalScrollPolicy="off" indicatorGap="0">
+	  <mx:FormItem label="昵  称:">
+	    <mx:Label textAlign="right" color="#FFFFFF" id="nickname"/>
+	  </mx:FormItem>
+	  <mx:FormItem label="用户ID:" horizontalAlign="right">
+	    <mx:Label color="#FFFFFF" id="userId"/>
+	  </mx:FormItem>
+	  <mx:FormItem label="U   豆:" horizontalAlign="right">
+	    <mx:Label color="#FFFFFF" id="U_bean"/>
+	  </mx:FormItem>
+	  <mx:FormItem label="荣誉点:" horizontalAlign="right">
+	    <mx:Label color="#FFFFFF" id="honor"/>
+	  </mx:FormItem>
+	  <mx:FormItem label="等  级:" horizontalAlign="right">
+	    <mx:Label color="#FFFFFF" id="grade"/>
+	  </mx:FormItem>
+	</mx:Form>
+	<mx:VBox x="0" y="149" height="45" width="309" verticalGap="0" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:Form width="308" paddingLeft="2" paddingTop="0" horizontalScrollPolicy="off" verticalScrollPolicy="off" indicatorGap="0">
+			<mx:HBox horizontalGap="8" paddingLeft="0" paddingTop="0" horizontalScrollPolicy="off" verticalScrollPolicy="off">	
+			<mx:FormItem label="总局数:" horizontalAlign="left">
+				<mx:Label text="10" id="total" color="#FFFFFF"/>
+			</mx:FormItem>
+						<mx:FormItem label="赢 局:" horizontalAlign="left">
+				<mx:Label text="10" id="winCont" color="#FFFFFF"/>
+			</mx:FormItem>
+			
+			<mx:FormItem label="输 局:" horizontalAlign="left">
+				<mx:Label text="10" id="lostCount" color="#FFFFFF"/>
+			</mx:FormItem>
+			
+			<mx:FormItem label="和 局:"  horizontalAlign="left">
+				<mx:Label text="Label" id="drawCount" color="#FFFFFF"/>
+			</mx:FormItem>
+			</mx:HBox>
+		</mx:Form>
+	    <mx:Form width="308" paddingLeft="2" paddingTop="0" horizontalScrollPolicy="off" verticalScrollPolicy="off" indicatorGap="0" height="20">
+			<mx:HBox horizontalGap="8" paddingLeft="0" paddingTop="0" horizontalScrollPolicy="off" verticalScrollPolicy="off">	
+			<mx:FormItem label="积   分:" horizontalAlign="left">
+				<mx:Label text="10"  id="score" color="#FFFFFF"/>
+			</mx:FormItem>
+						<mx:FormItem label="逃跑率:" horizontalAlign="left">
+				<mx:Label text="10" id="lostPercent" color="#FFFFFF"/>
+			</mx:FormItem>
+			</mx:HBox>
+		</mx:Form>
+	</mx:VBox>
+	<ns1:adComponet x="9" y="7" width="106" height="134" id="headPic">
+	</ns1:adComponet>
+	
+</mx:TitleWindow>
+

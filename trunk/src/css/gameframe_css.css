@@ -1,0 +1,57 @@
+/* CSS file */
+ApplicationControlBar
+{
+	  
+	highlight-alphas:0.8,0.1;
+	fillAlphas: 1.0, 1.0;
+	fillColors: #AED1E7, #7FB9DF ;
+	cornerRadius: 0;
+	drop-shadow-enabled:false;
+	paddingTop: 2;
+	
+}
+DataGrid
+{
+	alternatingItemColors: #0C5083, #0C5083;
+	color: #FFFFFF;
+	headerColors: #0C5083, #0C5083;
+	headerStyleName: dataGridHeader;
+	verticalGridLineColor: #EAFF00;
+	horizontalGridLines: false;
+	horizontalGridLineColor: #EAFF00;
+	verticalAlign: middle;
+	verticalScrollBarStyleName: dataGridVerticalScrollBar;
+	borderColor: #EAFF00;
+	roll-over-color:#0C5083;
+	selection-color:#0C5083;
+	textAlign: center;
+	fontSize: 12;
+	backgroundDisabledColor: #0C5083;
+	selectionDisabledColor: #0C5083;
+	backgroundAlpha: 1.0;
+	verticalGridLines: true;
+	borderThickness: 2;
+	themeColor: #0C5083;
+	
+}
+.dataGridHeader
+{
+	textAlign: center;
+}
+.dataGridVerticalScrollBar
+{
+}
+DataGrid.DataGridCss
+{
+	alternatingItemColors: #F7DFBD, #F7DFBD;
+	borderColor: #000000;
+	borderStyle: solid;
+	borderThickness: 1;
+	color: #3D3D3D;
+	fontSize: 12;
+	headerBackgroundSkin: "room_btn_skin";
+	textAlign: center;
+	themeColor: #F7DFBD;
+	verticalGridLines: false;
+}
+

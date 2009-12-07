@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<version no="001"></version> <!--版本号 no为版本号-->
+    <moduleList prefix=""> <!--各种模块的根地址-->
+		<module name="doudizhu"  url="B_Land/B_Land.swf" type="module" statusText="">  <!--模块名 模块地址  状态说明-->
+			<framework url="gameFrame.swf" type="module"  statusText=""></framework><!--该游戏的框架-->
+			<material url="B_land_Assets.swf"  type="rsl" statusText=""></material> <!--每个模块素材所需加载的素材的地址 和 加载时的状态说明-->
+			<config url="" statusText=""></config> <!--具体游戏的配置文件-->			
+		</module>
+		<module name="majiang"  url="B_Sparrow/B_Sparrow.swf" type="module" statusText="">  <!--模块名 模块地址  状态说明-->
+			<framework url="gameFrame.swf" type="module" statusText=""></framework><!--该游戏的框架-->
+			<material url="B_Sparrow_Assets.swf" type="rsl" statusText=""></material> <!--每个模块素材所需加载的素材的地址 和 加载时的状态说明-->
+			<config url="" statusText=""></config> <!--具体游戏的配置文件-->			
+		</module>
+	</moduleList>
+</data>

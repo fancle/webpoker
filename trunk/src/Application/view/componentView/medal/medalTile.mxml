@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Tile xmlns:mx="http://www.adobe.com/2006/mxml" width="110" height="50" horizontalGap="0.5" verticalGap="1" tileWidth="20"  >
+	<mx:Script>
+		<![CDATA[
+			public function set level(grade:int):void{
+			  this.removeAllChildren();
+			 	 var medal_2_num:int = int(grade/5);
+				 var medal_1_num:int = grade%5;
+				if(grade==0){
+					addChild(new medal_1());
+				}
+				while(medal_2_num--){
+					addChild(new medal_2());
+					
+				}
+				while(medal_1_num--){
+					addChild(new medal_1());
+				}
+				this.toolTip = "等级:"+grade;
+			
+
+			}
+		]]>
+	</mx:Script>
+</mx:Tile>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" width="419" height="303" styleName="biSaiOver" layout="absolute" initialize="init()" >
+	<mx:Button  x="183.5" y="237" id="submit" skin="bisai_jiesuan_btn" click="onClick(event)"/>
+	<mx:TextArea id="txtArea1" x="65" y="105"  height="127" width="287"  textAlign="left" fontWeight="bold" backgroundAlpha="0.0" borderStyle="none" enabled="true" editable="false" color="#000000" fontSize="12" verticalScrollPolicy="off"/>
+	<mx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			private var  _userName:String;
+			private var  _roomName:String;
+			private var  _rank:String;
+			private var  _honour:String;
+			private var  _ud:String;
+			private var  _date:String;
+			private var _txt:String;
+			internal function init():void{
+				txtArea1.htmlText = _txt;
+			}
+			internal function onClick(evt:MouseEvent):void
+			{
+				dispatchEvent(new Event("close",false,false));
+			}
+			public function set userName(value:String):void
+			{
+				_userName = value;
+			}
+			public function set roomName(value:String):void
+			{
+				_roomName = value;
+			}
+			public function set rank(value:String):void
+			{
+				_rank = value;
+			}
+			public function set honour(value:String):void
+			{
+				_honour = value;
+			}
+			public function set UD(value:String):void
+			{
+				_ud = value;
+			}
+			public function set date(value:String):void
+			{
+				_date = value;
+			}
+			
+			public function updateView():void
+			{
+				
+				_txt = "<p>"+_userName+"，恭喜您在【"+_roomName+"】比赛中获得了第"+_rank+"名！奖励如下：</p><br><p align='left'>			♣ "+_honour+"荣誉点</p><p align='left'>			♣ "+_ud+"U豆</p><p align='right'>优嘻网竞技组委会颁发</p><p>"+_date+"</p>";
+				
+			}
+			
+		]]>
+	</mx:Script>	
+</mx:Panel>

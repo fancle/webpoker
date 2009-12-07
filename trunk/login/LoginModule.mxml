@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Module xmlns:mx="http://www.adobe.com/2006/mxml"
+		   layout="absolute"
+		   width="950"
+		   height="620"
+		   color="#000000"
+		   xmlns:local="*"
+		   paddingTop="10"
+		   creationComplete="init()"
+		   xmlns:ns1="Application.view.componentView.ad.*">
+	<mx:Style>
+		.LoginWin
+		{
+			background-color:#ff7502
+		}
+	</mx:Style>
+
+	<mx:Script>
+		<![CDATA[
+			import common.data.HallConfig;
+
+			private function init():void
+			{
+				var glow:GlowFilter=new GlowFilter(0xFFFFFF, 1, 3, 3, 1);
+				txt_field.filters=[glow];
+				ad.url=HallConfig.getInstance().getAd('loginAd')['url'].toString();
+				ad.link=HallConfig.getInstance().getAd('loginAd')['link'].toString();
+			}
+		]]>
+	</mx:Script>
+
+
+	<local:logo_login x="250"
+					  y="58">
+	</local:logo_login>
+
+	<mx:Canvas width="394"
+			   height="277"
+			   horizontalCenter="0"
+			   verticalCenter="7"
+			   dropShadowEnabled="true"
+			   cornerRadius="10"
+			   backgroundColor="#FFFFFF"
+			   borderStyle="solid">
+		<mx:TitleWindow id="loginWin"
+						styleName="LoginWin"
+						width="384"
+						height="265"
+						layout="absolute"
+						titleBackgroundSkin="login_bar_skin"
+						roundedBottomCorners="false"
+						horizontalScrollPolicy="off"
+						verticalScrollPolicy="off"
+						borderThickness="0"
+						dropShadowEnabled="false"
+						paddingBottom="0"
+						paddingRight="0"
+						paddingLeft="0"
+						paddingTop="0"
+						borderThicknessBottom="0"
+						borderThicknessLeft="0"
+						borderThicknessRight="0"
+						borderThicknessTop="0"
+						x="4"
+						y="4">
+
+			<mx:Button id="chargeBtn"
+					   buttonMode="true"
+					   skin="charge_btn_skin"
+					   x="51"
+					   y="144">
+			</mx:Button>
+
+			<mx:Canvas id="txt_field"
+					   x="102"
+					   y="89"
+					   width="262"
+					   height="105"
+					   backgroundColor="#fea33d"
+					   borderStyle="solid"
+					   borderColor="#E6BC96">
+				<mx:Label text="用户名："
+						  color="#593106"
+						  fontSize="12"
+						  letterSpacing="3"
+						  height="20"
+						  x="18.5"
+						  y="15"
+						  width="65">
+				</mx:Label>
+				<mx:Label text="密 码："
+						  color="#593106"
+						  fontSize="12"
+						  letterSpacing="3"
+						  height="20"
+						  x="18.5"
+						  y="42"
+						  width="65">
+				</mx:Label>
+				<mx:Label text="附加码："
+						  color="#593106"
+						  fontSize="12"
+						  letterSpacing="3"
+						  height="20"
+						  x="18.5"
+						  y="70"
+						  width="65">
+				</mx:Label>
+				<mx:ComboBox id="username"
+							 x="80.5"
+							 y="13"
+							 cornerRadius="0"
+							 themeColor="#FEA33D"
+							 fontWeight="normal"
+							 editable="true"
+							 width="160">
+				</mx:ComboBox>
+				<mx:TextInput id="password"
+							  x="80.5"
+							  y="41"
+							  displayAsPassword="true"
+							  themeColor="#FEA33D"
+							  text="ibm"/>
+				<mx:TextInput id="extraWord"
+							  x="80.5"
+							  y="69"
+							  width="86"
+							  themeColor="#FEA33D"
+							  maxChars="4"/>
+				<mx:Label x="175.5"
+						  y="72"
+						  text="Label"
+						  width="63.5"
+						  color="#593106"
+						  id="extraWordText"/>
+			</mx:Canvas>
+
+			<mx:Button id="registerBtn"
+					   label="注  册"
+					   x="147"
+					   y="205.1"
+					   color="#593106"
+					   buttonMode="true"
+					   skin="Login_btn_skin"
+					   width="71.0"
+					   height="23.9"
+					   fontSize="13"
+					   fontWeight="normal"
+					   textSelectedColor="#FF3E55">
+			</mx:Button>
+			<mx:Button id="loginBtn"
+					   label="登  陆"
+					   x="253"
+					   y="205.1"
+					   color="#593106"
+					   buttonMode="true"
+					   skin="Login_btn_skin"
+					   height="23.9"
+					   width="71.0"
+					   fontSize="13"
+					   fontWeight="normal"
+					   textSelectedColor="#FF3E55">
+			</mx:Button>
+
+			<ns1:adComponet x="1"
+							y="2"
+							height="77"
+							width="382"
+							id="ad">
+			</ns1:adComponet>
+
+		</mx:TitleWindow>
+	</mx:Canvas>
+
+</mx:Module>

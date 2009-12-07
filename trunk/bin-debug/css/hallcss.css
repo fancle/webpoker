@@ -1,0 +1,317 @@
+/* CSS file */
+ToolTip.gameframe
+{
+	backgroundColor: #412612;
+	
+}
+DataGrid.BlandHistory
+{
+	color: #FFFFFF;
+	verticalGridLineColor: #000000;
+	horizontalGridLines: true;
+	rollOverColor: #CBB492;
+	fontSize: 12;
+	selectionColor: #CBB492;
+	verticalAlign: top;
+	headerColors: #A65B14, #491D03;
+	textAlign: center;
+	textRollOverColor: #FFFFFF;
+	textSelectedColor: #FFFFFF;
+	headerStyleName: dataGridHeaderBlandHistory;
+	selectionDisabledColor: #3D6C93;
+	fontWeight: normal;
+	leading: 0;
+	alternatingItemColors: #CBB492, #CBB492;
+	borderColor: #000000;
+	horizontalGridLineColor: #000000;
+	backgroundDisabledColor: #CBB492;
+}
+
+
+DataGrid.bland
+{
+	color: #FFFFFF;
+	verticalGridLineColor: #FFFFFF;
+	horizontalGridLines: true;
+	rollOverColor: #D5C7B2;
+	fontSize: 12;
+	selectionColor: #D5C7B2;
+	verticalAlign: top;
+	headerColors: #D5C7B2, #D5C7B2;
+	textAlign: center;
+	textRollOverColor: #FFFFFF;
+	textSelectedColor: #FFFFFF;
+	headerStyleName: dataGridHeaderBland;
+	selectionDisabledColor: #34607C;
+	fontWeight: normal;
+	leading: 1;
+	alternatingItemColors: #D5C7B2, #D5C7B2;
+	backgroundDisabledColor: #D5C7B2;
+	horizontalGridLineColor: #FFFFFF;
+	borderColor: #FFFFFF;
+	verticalScrollBarStyleName: dataGridVerticalScrollBar;
+	borderThickness: 1;
+
+
+}
+Button.props
+{
+	textAlign: right;
+	color: #DAF810;
+	textRollOverColor: #A1F124;
+	textSelectedColor: #D7FF1A;
+	leading: 2;
+	disabledColor: #FFFFFF;
+	paddingLeft: 10;
+	paddingBottom: 0;
+	paddingTop: 10;
+	paddingRight: 0;
+}
+ButtonScrollingCanvas
+{
+    leftButtonStyleName:scrollLeftBtn; 
+    rightButtonStyleName:scrollRightBtn;
+    buttonWidth:17; 
+
+
+}
+.scrollLeftBtn
+{
+    skin:Embed(skinClass='gameframe_left_btn'); 
+   
+
+}
+.scrollRightBtn
+{
+	skin:Embed(skinClass='gameframe_right_btn');
+}
+
+ApplicationControlBar.gameframe
+{
+
+	paddingTop: 2;
+
+	borderSkin: Embed(skinClass='gameFrame_ApplicationControlBar');
+	cornerRadius: 0;
+}
+ScrollBar
+{
+	trackColors: #F5F3EA, #F5F3EA;
+	fillAlphas: 1.0, 1.0;
+	fillColors: #EFEBDF, #EFEBDF, #EFEBDF, #EFEBDF;
+	borderColor: #BCBAAC;
+	cornerRadius: 0;
+	thumbOffset: 0;
+	themeColor: #EFEBDF;
+}
+Canvas.connenctLoading
+{
+	modal-transparency:0.5;
+	modal-transparency-color:#000000;
+	
+}
+Module.gameframecss
+{
+	modal-transparency:0.5;
+	modal-transparency-color:#000000;
+} 
+Canvas.loadPane
+{
+	modal-transparency:0.5;
+	modal-transparency-color:#000000;
+}
+
+DataGrid
+{
+	headerStyleName: dataGridHeader;
+	rollOverColor: #F5E4CB;
+	selectionColor: #D7BD99;
+	alternatingItemColors: #F7DFBD, #F7DFBD;
+	verticalGridLineColor: #929292;
+}
+TitleWindow.userInfo
+{
+	cornerRadius: 0;
+	backgroundColor: #FEBA03;
+	header-colors:#f78d52,#f45e0b;
+	highlight-alphas:0.8,0.3;
+	headerHeight: 25;	
+	titleStyleName: titleWindowTitle;
+	
+	borderColor: #F45E0B;
+	borderAlpha: 1.0;
+	borderThicknessLeft: 2;
+	borderThicknessRight: 2;
+	borderThicknessBottom: 2;
+	
+    header-colors:#f78d52,#f45e0b;
+	highlight-alphas:0.4,0.3;
+	titleStyleName: titleWindowTitle;
+	closeButtonUpSkin: Embed(skinClass='close_btn_up');
+	closeButtonOverSkin: Embed(skinClass='close_btn_over');
+	closeButtonDownSkin: Embed(skinClass='close_btn_up');
+	
+
+}
+
+
+
+Application
+{
+	backgroundGradientAlphas: 1.0, 1.0;
+	backgroundGradientColors: #E4572D, #FFEA8A;
+	fontSize: 12;
+	color: #FFFFFF;
+}
+global
+{
+     backgroundGradientAlphas: 1.0, 1.0;
+	 backgroundGradientColors: #E4572D, #FFEA8A;
+/* 	 modal-transparency:0;
+	 modal-transparency-blur:0;
+	 modal-transparency-color:#000000; */
+}
+HRule
+{
+	strokeWidth: 11;
+	strokeColor: #FF0000;
+	shadowColor: #FF0000;
+}
+Alert
+{
+	roundedBottomCorners: true;
+	borderColor: #FFFFFF;
+	cornerRadius: 0;
+	backgroundColor: #F6973E;
+	controlBarStyleName: alertControlBar;
+	statusStyleName: alertStatus;
+	backgroundSize: "100%";
+	titleStyleName: alertTitle;
+	borderThicknessLeft: 0;
+	borderThicknessTop: 0;
+	borderThicknessBottom: 0;
+	borderThicknessRight: 0;
+	borderAlpha: 1.0;
+	backgroundAlpha: 1.0;
+	headerHeight: 26;
+	fontSize: 12;
+	header-colors:#eb5709,#f78549;
+	highlight-alphas:0.7,0.45;
+	button-style-name:alertButton;
+	drop-shadow-enabled:false;
+	button-style-name:alertBtn;
+    text-roll-over-color:#FFFFFF;
+    color:#593106;
+    text-selected-color:#FFFFFF;
+    
+
+}
+.alertBtn{
+	skin:Embed(skinClass="Login_btn_skin");
+	
+}
+Button
+{
+	fontStyle: normal;
+	textDecoration: normal;
+	fontWeight: bold;
+}
+ApplicationControlBar.game
+{
+	fillAlphas: 1.0, 1.0;
+	fillColors: #F9C667, #F8A644;
+	cornerRadius: 0;
+	borderSkin: Embed(skinClass='ApplicationControl');
+	color: #FFFFFF;
+}
+Panel.biSaiOver
+{
+	borderSkin: Embed(skinClass='Panel_borderSkin');
+}
+DataGrid.gameframe
+{
+	alternatingItemColors: #623311, #623311;
+	color: #FFFFFF;
+	headerColors: #A5580F, #421903;
+	headerStyleName: dataGridHeader;
+	verticalGridLineColor: #000000;
+	horizontalGridLines: false;
+	horizontalGridLineColor: #000000;
+	verticalAlign: middle;
+	verticalScrollBarStyleName: dataGridVerticalScrollBar;
+	borderColor: #000000;
+	roll-over-color:#0E2C42;
+	selection-color:#854617;
+	textAlign: center;
+	fontSize: 12;
+	backgroundDisabledColor: #0C5083;
+	selectionDisabledColor: #0C5083;
+	backgroundAlpha: 1.0;
+	verticalGridLines: false;
+	borderThickness: 2;
+	themeColor: #0C5083;
+	textRollOverColor: #FFFFFF;
+	textSelectedColor: #FFFFFF;
+}
+
+
+
+FormItem
+{
+	horizontalAlign: right;
+	color: #593106;
+	fontSize: 12;
+
+}
+Form
+{
+	fontSize: 12;
+	paddingBottom: 5;
+}
+.dataGridHeader
+{
+	color: #FFFFFF;
+	textAlign: center;
+	fontWeight: bold;
+}
+.dataGridHeaderBland{
+	color: #FFFFFF;
+	textAlign: center;
+	fontWeight: bold;
+}
+.dataGridHeaderBlandHistory{
+	color: #FFFFFF;
+	textAlign: center;
+
+}
+.panelControlBar
+{
+}
+ToolTip
+{
+	backgroundColor: #C7E634;
+	color: #FFFFFF;
+	fontSize: 12;
+	textAlign: center;
+}
+.dataGridVerticalScrollBar
+{
+}
+TitleWindow.wisper
+{
+	borderColor: #F45E0B;
+	borderAlpha: 1.0;
+	borderThicknessLeft: 2;
+	borderThicknessRight: 2;
+	borderThicknessBottom: 2;
+	
+    header-colors:#f78d52,#f45e0b;
+	highlight-alphas:0.4,0.3;
+	titleStyleName: titleWindowTitle;
+	closeButtonUpSkin: Embed(skinClass='close_btn_up');
+	closeButtonOverSkin: Embed(skinClass='close_btn_over');
+	closeButtonDownSkin: Embed(skinClass='close_btn_up');
+	
+}
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="40" height="40" horizontalScrollPolicy="off" creationComplete="init()" paddingLeft="0" paddingTop="0">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Label;
+			import mx.controls.Button;
+			internal function init():void{
+
+				
+			}
+			override public  function set data(value:Object):void{
+				var btn:Button = new Button();
+				btn.setStyle("skin",value);			
+				addChild(btn);				
+				btn.buttonMode = true;
+				btn.label = "15"
+				btn.styleName = "props";	
+			}
+		]]>
+	</mx:Script>
+</mx:HBox>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionScriptProperties mainApplicationPath="game.mxml" version="3">
+<compiler additionalCompilerArguments="-locale en_US" copyDependentFiles="true" enableModuleDebug="true" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersion="10.0.0" htmlPlayerVersionCheck="true" outputFolderPath="bin-debug" sourceFolderPath="src" strict="true" useApolloConfig="false" verifyDigests="true" warn="true">
+<compilerSourcePath>
+<compilerSourcePathEntry kind="1" linkType="1" path="gameframe"/>
+<compilerSourcePathEntry kind="1" linkType="1" path="hall"/>
+<compilerSourcePathEntry kind="1" linkType="1" path="login"/>
+<compilerSourcePathEntry kind="1" linkType="1" path="room"/>
+<compilerSourcePathEntry kind="1" linkType="1" path="game"/>
+</compilerSourcePath>
+<libraryPath defaultLinkType="1">
+<libraryPathEntry kind="4" path=""/>
+<libraryPathEntry kind="1" linkType="1" path="libs"/>
+<libraryPathEntry kind="1" linkType="1" path="libs/login_libs"/>
+<libraryPathEntry kind="1" linkType="1" path="libs/room_libs"/>
+</libraryPath>
+<sourceAttachmentPath/>
+</compiler>
+<applications>
+<application path="game.mxml"/>
+</applications>
+<modules>
+<module application="src/game.mxml" destPath="RoomModule.swf" optimize="true" sourcePath="room/RoomModule.mxml"/>
+<module application="src/game.mxml" destPath="hall.swf" optimize="true" sourcePath="hall/hall.mxml"/>
+<module application="src/game.mxml" destPath="gameFrame.swf" optimize="true" sourcePath="gameframe/gameFrame.mxml"/>
+<module application="src/game.mxml" destPath="LoginModule.swf" optimize="true" sourcePath="login/LoginModule.mxml"/>
+<module application="src/game.mxml" destPath="E:/张伟峰工作区/web棋牌游戏/multiple_pokerGame/game/B_Land/B_Land.swf" optimize="true" sourcePath="game/B_Land/B_Land.mxml"/>
+<module application="src/game.mxml" destPath="E:/张伟峰工作区/web棋牌游戏/multiple_pokerGame/game/B_Sparrow/B_Sparrow.swf" optimize="true" sourcePath="game/B_Sparrow/B_Sparrow.mxml"/>
+</modules>
+<buildCSSFiles/>
+</actionScriptProperties>

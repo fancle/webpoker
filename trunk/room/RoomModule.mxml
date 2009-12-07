@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Module xmlns:mx="http://www.adobe.com/2006/mxml"
+		   layout="absolute"
+		   width="950"
+		   height="589"
+		   horizontalScrollPolicy="off"
+		   verticalScrollPolicy="off"
+		   backgroundColor="#EDB725"
+		   color="#000000"
+		   xmlns:local="*"
+		   xmlns:ns1="Application.view.componentView.room.*">
+	<!--backgroundImage ="@Embed(source='../../../../../libs/room_libs/room_bg.png')"-->
+
+
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			[Bindable]
+			public var dataArr:ArrayCollection=new ArrayCollection();
+
+			/*private function showEmotionChooser(event:Event=null):void
+			{
+				trace("showEmotionChooser=---------------->>:" + event.target);
+				//emotionChooser.visible=!emotionChooser.visible;
+			}
+			*/
+		]]>
+	</mx:Script>
+	<mx:HBox paddingTop="2"
+			 paddingLeft="2"
+			 horizontalGap="7"
+			 width ="100%"
+			 >
+
+
+		<mx:Tile id="tableArea"
+				 width="631"
+				 height="581"
+				 paddingLeft="30"
+				 paddingBottom="40"
+				 horizontalGap="40"
+				 verticalGap="40"
+				 paddingTop="40"
+				 x="329"
+				 y="7"
+				 letterSpacing="1"
+				 backgroundColor="#FFCC66"
+				 borderColor="#D07300"
+				 borderThickness="2"
+				 borderStyle="solid"
+				 direction="horizontal">
+		</mx:Tile>
+		<mx:VBox verticalGap="2"   width="308" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+             <mx:Canvas width="307" height="198">
+             	<local:room_userList_bg>				
+				</local:room_userList_bg>                 
+          				<mx:DataGrid id="dg" 
+						 width="294"
+						 height="190"
+						 styleName="DataGridCss"
+						 headerBackgroundSkin="room_btn_skin"
+						 doubleClickEnabled="false"
+						 borderStyle="solid"
+						 borderColor="#000000"
+						 borderThickness="1"
+						 dataProvider="{dataArr}"					
+						 horizontalScrollPolicy = "auto"  
+						 textAlign="center"
+						 color="#3D3D3D"
+						 verticalGridLines="false"
+						 rowHeight="25"						 						 
+						 fontSize="12" y="3" x="7" themeColor="#FF820C" alternatingItemColors="[#F7DFBD, #F7DFBD]" alpha="1.0">
+				</mx:DataGrid>
+			</mx:Canvas>
+
+
+<!--		
+			<mx:Canvas
+					   width="100%"
+					   height="371"
+					   backgroundColor="#E9990D"
+					   y="221"
+					   x="0"
+					   horizontalScrollPolicy="off"
+					   verticalScrollPolicy="off"
+					   borderColor="#F57605">
+				<mx:TextArea backgroundColor="#F7DFBD"
+							 width="259"
+							 height="308"
+							 y="1.5"
+							 x="3"
+							 borderColor="#D07300"
+							 borderThickness="2"
+							 color="#000000"
+							 focusSkin="TextArea_focusSkin"
+							 fontSize="13"
+							 editable="false">
+				</mx:TextArea>
+				<mx:ComboBox id="chatTarget"
+							 x="10"
+							 y="316.5"
+							 editable="true"
+							 text="所有人"
+							 fontSize="11"
+							 editableDisabledSkin="ComboBox_editableSkin" width="178">
+				</mx:ComboBox>
+
+				<mx:ComboBox id="chatMsg"
+							 x="10"
+							 y="342"
+							 width="200"
+							 editable="true"
+							 editableDisabledSkin="ComboBox_editableSkin">
+				</mx:ComboBox>
+				<mx:Button id="emotionBtn"
+						   width="22"
+						   height="22"
+						   skin="emotion_btn_skin"
+						   x="197"
+						   y="317"
+						   rollOver="{glow.target = emotionBtn;glow.play()}"
+						   rollOut="{glow.end(); glow.target = null;}"
+						   click="showEmotionChooser(event)"/>
+				<mx:Button id="chatBtn"
+						   width="22"
+						   height="22"
+						   skin="chat_btn_skin"
+						   rollOver="{glow.play()}"
+						   rollOut="{glow.end()}"
+						   x="288"
+						   y="317"/>
+				<mx:Button id="sendBtn"
+						   x="215"
+						   y="342"
+						   label="发送"
+						   width="49"
+						   color="#FFFFFF"
+						   skin="room_btn_skin"
+						   letterSpacing="1"
+						   fontSize="10"/>
+				<local:EmotionChooser id="emotionChooser"
+									  x="18"
+									  y="144.5">
+				</local:EmotionChooser>
+
+			</mx:Canvas>
+-->
+	<mx:Canvas width="307">
+		
+		<local:room_chat_bg>
+			
+		</local:room_chat_bg>
+		<local:ChatComponent id="chatView" width="299" y="6" x="6" height="358">
+		</local:ChatComponent>
+		</mx:Canvas>
+		</mx:VBox>
+
+	</mx:HBox>
+	
+<!--
+	<mx:Glow id="glow"
+			 duration="1000"
+			 repeatCount="0"
+			 alphaFrom="1.0"
+			 alphaTo="0.3"
+			 blurXFrom="0.0"
+			 blurXTo="10.0"
+			 blurYFrom="0.0"
+			 blurYTo="10.0"
+			 color="#66FF00"/>
+-->
+</mx:Module>

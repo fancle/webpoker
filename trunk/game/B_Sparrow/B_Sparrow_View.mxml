@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="B_Sparrow.*" width="758" height="595" verticalScrollPolicy="off" horizontalScrollPolicy="off" xmlns:local="*"  xmlns:io="Application.model.io.*" >
+	<mx:VBox id="topHeadBox" x="17" y="31" width="78" height="80" backgroundColor="#FFFFFF">
+	</mx:VBox>
+	<mx:VBox id="ownerHeadBox" x="10" y="420" width="78" height="80" backgroundColor="#FFFFFF">
+	</mx:VBox>
+
+	
+	<mx:HBox id="userSparrow_Box" x="177" y="51" width="404" height="37">
+	</mx:HBox>
+	<mx:Canvas width="89" height="80" id="clockArea" x="342" y="227">		
+	</mx:Canvas>
+
+	<mx:HBox id="ownerSparrow_Box" width="596" height="70" x="96" y="475">
+	</mx:HBox>
+	<mx:HBox id="disCardSparrow_top_box" x="285" y="95" width="282" height="72" >
+	</mx:HBox>
+	
+
+
+	<mx:HBox id="disCardSparrow_bottom_box" x="97" y="400" width="260" height="72" >
+	</mx:HBox>	
+	<mx:Canvas id="readyTop_Canvas" x="324" y="126" width="110" height="60" >
+	</mx:Canvas>
+	<mx:Canvas id="readyOwner_Canvas" x="324" y="355" width="110" height="60" >
+	</mx:Canvas>
+	<mx:Canvas id="controlPane" y="320" width="258" height="162" x="493" verticalScrollPolicy="off"   horizontalScrollPolicy="off"  visible="false">
+		<mx:Button id="ting_btn" x="154" y="66" enabled="false"/>
+		<mx:Button id="chi_btn" x="10" y="66" enabled="false"/>
+		<mx:Button id="peng_btn" x="58" y="66" enabled="false"/>
+		<mx:Button id="gang_btn" x="106" y="66" enabled="false"/>
+		<mx:Button id="hu_btn" x="202" y="66" enabled="false"/>
+		<mx:Button id="giveUp_btn" x="175" y="118" />
+	</mx:Canvas>
+	<mx:Button id="start_Btn" width="74.5" height="26"  buttonMode="true" x="342" y="479"/>
+	<mx:Label id="userName" x="17" y="114" text="" width="78" fontStyle="normal" fontWeight="normal" textAlign="center" fontSize="12" color="#FFFFFF"/>
+	<mx:Label id="ownerName" x="10" y="503" text="" width="78" textAlign="center" fontSize="12" color="#FFFFFF"/>
+	<local:ExpBar id="userExpBar" x="17" y="140" visible="false">		
+	</local:ExpBar>
+	<local:ExpBar id="ownerExpBar" x="10" y="530" visible="false">		
+	</local:ExpBar>
+</mx:Canvas>

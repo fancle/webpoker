@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" mouseEnabled="false" mouseChildren="false" xmlns:local="*">
+
+	<mx:Script>
+		<![CDATA[
+			private var _isFull:Boolean = false;
+			
+			public function get isFull():Boolean
+			{
+				return _isFull;
+			}
+			
+			public function set isFull(value:Boolean):void
+			{
+				_isFull = value;
+				if(value)
+				{
+					table.gotoAndStop(6);	
+				}
+				else
+				{
+					table.gotoAndStop(1);	
+				}
+			}	
+		]]>
+	</mx:Script>
+	
+	<local:landlord_table id="table">
+	</local:landlord_table>
+</mx:Canvas>

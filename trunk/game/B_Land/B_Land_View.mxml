@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas  xmlns:mx="http://www.adobe.com/2006/mxml" width="758" height="595" xmlns:ad="Application.view.componentView.ad.*" xmlns:ns1="B_Land.*" xmlns:local="*">
+	<mx:HBox   id="backCardBox" y="5" width="252" height="116" horizontalGap="0" horizontalAlign="left" x="274" >
+	</mx:HBox>
+	<mx:HBox id="leftHeadBox" x="19" y="183" width="76" height="81" horizontalGap="0" horizontalAlign="left" verticalAlign="top">
+	</mx:HBox>
+	<mx:HBox id="rightHeadBox" x="666" y="183" width="76" height="81" horizontalGap="0" horizontalAlign="left" verticalAlign="top">
+	</mx:HBox>
+	<mx:HBox id="ownerHeadBox" x="19" y="454" width="76" height="81" horizontalGap="0" horizontalAlign="left" verticalAlign="top">		
+	</mx:HBox>
+	<mx:HBox id="ownerCardBox" x="159" y="466" width="464" height="100" horizontalGap="0" verticalAlign="top" horizontalAlign="left">
+	</mx:HBox>
+	<mx:HBox id="callScoreBtnBox" x="173.75" y="378" width="410.5" height="42" verticalAlign="middle" horizontalAlign="center" horizontalGap="40">
+		<mx:Button id="m_btOneScore"/>
+		<mx:Button id="m_btTwoScore"/>
+		<mx:Button id="m_btThreeScore"/>
+		<mx:Button id="m_btGiveUpScore"/>
+	</mx:HBox>
+	<mx:HBox id="controlCardBtnBox" x="173.75" y="428" width="410.5" height="29" horizontalAlign="center" verticalAlign="middle" horizontalGap="25">
+		<mx:Button id="m_btOutCard"/>
+		<mx:Button id="m_btAutoOutCard"/>
+		<mx:Button id="m_btPassCard"/>
+	</mx:HBox>
+	<mx:VBox id="systemBtnBox" x="666" y="419" height="142" width="82" horizontalAlign="center" verticalAlign="middle" verticalGap="15">
+		<mx:Button id="m_btStart" x="681" y="446"/>
+		<mx:Button id="m_sortCard" toggle="true" visible="false"/>
+		<mx:Button id="m_bTrustCard"  toggle="true" selected="false"/>
+	</mx:VBox>
+
+	<mx:HBox id="pokeLeft" x="140" y="267" width="75" height="80">
+	</mx:HBox>
+	<mx:HBox id="pokeRight" x="610" y="269" width="75" height="80" horizontalAlign="left">
+	</mx:HBox>
+	
+	<mx:HBox id="readyOwnerBox" x="274.5" y="360" width="242" height="80" horizontalAlign="center" horizontalGap="0" horizontalScrollPolicy="off">
+	</mx:HBox>
+	<mx:HBox id="readyLeftBox" x="149" y="183" width="189" height="81" horizontalGap="0" horizontalScrollPolicy="off" horizontalAlign="right">
+	</mx:HBox>	
+	<mx:HBox id="readyRightBox" x="448" y="184" width="175" height="80" horizontalAlign="left" horizontalGap="0" horizontalScrollPolicy="off">
+	</mx:HBox>
+	<mx:HBox id="leftUserCard" x="149" y="147" width="198" height="80">
+	</mx:HBox>
+	<mx:HBox id="rightUserCard" x="450" y="146" width="173" height="81">
+	</mx:HBox>
+	<mx:HBox id="ownerUserCard" x="283" y="308" width="227.5" height="92">
+	</mx:HBox>
+	<mx:Label id="leftName" x="19" y="272"  width="76" color="#FFFFFF" textAlign="center"/>
+	<mx:Label id="ownerName" x="19" y="538" width="76" color="#FFFFFF" textAlign="center" fontSize="12"/>
+	<mx:Label id="rightName" x="667" y="268" width="76" color="#FFFFFF" textAlign="center"/>
+	<mx:Label id="leftLeaveCard" x="19" y="292" width="76" color="#FFFFFF" textAlign="center" fontSize="12"/>
+	<mx:Label id="rightLeaveCard" x="667" y="287"  width="75" color="#FFFFFF" fontSize="12" textAlign="center"/>
+	<mx:HBox  id="socreHistory" x="569" y="1" width="172" height="100" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+	
+	</mx:HBox>
+	<ns1:leftViewScore id="m_landView" x="28" y="2" color="#FFFFFF" visible="false" showEffect="{dissolveIn}">
+	</ns1:leftViewScore>
+	<mx:Dissolve id="dissolveIn" duration="1500" alphaFrom="0.0" alphaTo="1.0"/>
+	<local:ExpBar id="leftExp" x="19" y="322" visible="false">
+		
+	</local:ExpBar>
+	<local:ExpBar id="rightExp" x="667" y="312" visible="false">
+		
+	</local:ExpBar>
+	<local:ExpBar id="ownerExp" x="19" y="561" visible="false">
+		
+	</local:ExpBar>
+</mx:Canvas >

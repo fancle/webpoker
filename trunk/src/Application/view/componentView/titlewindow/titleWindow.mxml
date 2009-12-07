@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="423" height="363" showCloseButton="true" xmlns:ns1="Application.view.componentView.titlewindow.*" borderThickness="0" cornerRadius="0">
+   <mx:SWFLoader id="swfloader" width="419" height="331" scaleContent="false">   	  
+   </mx:SWFLoader>
+</mx:TitleWindow>

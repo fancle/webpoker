@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="950" height="620"  horizontalScrollPolicy="off" verticalScrollPolicy="off"  creationComplete="startUp()"   xmlns:local="*"  backgroundColor="#FB9595" xmlns:code="http://code.google.com/p/richtextfield/">
+<mx:Style source="css/hallcss.css"/>
+	<mx:Style source="css/gameframe_css.css"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import common.data.StringDef;
+			import mx.controls.Alert;
+			import common.data.InitData;
+			import common.data.GlobalDef;
+			
+		    import mx.core.Application;
+			import mx.effects.Resize;
+			import mx.events.ResizeEvent;
+			import Application.ApplicationFacade;
+			import flash.display.Stage;
+			import flash.display.StageScaleMode;
+			import flash.display.StageDisplayState;		
+			import flash.events.Event;			
+			public var facade:ApplicationFacade=ApplicationFacade.getInstance(GlobalDef.GAME_FACADE);
+			//启动pureMvc
+			private var localConnection:LocalConnection;
+            
+			public function startUp():void{
+               // callLater(setFullScreen);	//排队执行	
+                
+/*                 if(hasDoubleClient()){
+					//sendNotification(NotificationString.ALERT,StringDef.WARN_CANNOT_DOUBLECLIENT);
+					Alert.show(StringDef.WARN_CANNOT_DOUBLECLIENT);
+					return ;
+				}  */
+                
+                InitData.getInstance().xmlUrl = mx.core.Application.application.parameters["xmlUrl"]	//获取配置文件地址
+                InitData.getInstance().personInfo = mx.core.Application.application.parameters["personInfo"];//获取用户信息
+				
+				facade.startup(this); 
+			  //  systemManager.stage.addEventListener(FullScreenEvent.FULL_SCREEN,onReszie);      
+			    
+			}
+			private function hasDoubleClient():Boolean{
+				var has_Double:Boolean = false;
+				    localConnection = new LocalConnection;
+				try{
+					localConnection.connect(GlobalDef.LOCALCONNSTR);
+				}
+				catch(error:Error){
+					has_Double = true;
+				}
+				return has_Double;
+			}
+			//全屏设置
+			public function setFullScreen():void{
+				if(stage.displayState==StageDisplayState.NORMAL){
+				     stage.displayState=StageDisplayState.FULL_SCREEN;	
+			   		 stage.scaleMode=StageScaleMode.SHOW_ALL;   
+			   		 stage.align = StageAlign.TOP; 
+				}else{
+					 stage.displayState=StageDisplayState.NORMAL;	
+				}					
+
+
+				// this.height = stage.height;
+
+			}
+			private function onReszie(evt:FullScreenEvent):void{
+
+		  //      this.x = (stage.stageWidth - this.width)/2;
+				
+			}
+			//切换用户 退到主场景
+			public function logout(value:DisplayObject):void{
+				controlbar.visible = false;
+				addModule(value);
+			}
+			//添加模块到主舞台
+			public function addModule(module:DisplayObject):void{
+	            removeAll();
+				this.addChild(module);
+				module.y = 30;//低于导航的位置
+			}
+			//清理所有加载进来的模块
+			private function removeAll():void{
+				while(this.numChildren>1){
+					 getChildAt(this.numChildren-1).stage.focus = null;
+					 this.removeChildAt(this.numChildren-1);
+				}
+			}
+		]]>
+	</mx:Script>
+
+	<mx:ApplicationControlBar  dock="false" width="950" height="31" visible="false" styleName="game" id="controlbar" x="0">
+		<mx:Spacer width="20"/>
+		<mx:Label text="欢迎进入优嘻网"/>
+		<mx:Spacer/>
+		<mx:Label text="" id="onlineNumLabel"/>
+		<mx:Spacer width="50%"/>	
+		<mx:Label text="label"  id="leftTopText"  color="#593106" buttonMode="true"  useHandCursor="true" mouseChildren="false" textDecoration="underline" width="218"/>
+		<mx:Button label="快速加入" id="findChairBtn" height="20" color="#000000" fontWeight="normal" visible="false" skin="Common_Btn"/>
+		<mx:Button label="退出房间" id="exitRoomBtn" visible="false" skin="exit_room_btn" color="#FFFF00" fontWeight="normal" textAlign="center" paddingTop="2" height="18" paddingRight="10"/>
+	</mx:ApplicationControlBar>
+</mx:Application>

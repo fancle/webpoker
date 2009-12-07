@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>    <!--游戏初始化配置文件-->
+   <version no="001"></version> <!--版本号 no为版本号-->
+   <hall root="">
+	   <hallconfig url="config/hallconfig.xml"></hallconfig> <!--大厅的设置配置-->  
+   </hall>
+   
+</data>
